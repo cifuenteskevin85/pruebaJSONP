@@ -1,0 +1,5 @@
+=form_for list do |f|
+  =f.check_box :check
+  =f.submit "Update"
+  =f.label :check, list.work
+  =link_to "(remove)", list, method: :delete, data: {confirm: "Are you sure?"}, remote: true
