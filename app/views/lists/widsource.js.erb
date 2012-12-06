@@ -1,7 +1,8 @@
 $(function(){
-  
+
   $('#wid-task').html('<div id = "wid-form"><%= j render "inde" %></div>');
-  $('#wid-task #incomplete_lists form input[type=submit]').remove();  
+  $('#wid-task #incomplete_lists form input[type=submit]').remove();
+  
   /*function of controller Actions form*/
   $('#wid-task #form_new form input[type=submit]').live('click',function(e){
     e.preventDefault();
