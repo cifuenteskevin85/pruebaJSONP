@@ -27,8 +27,8 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     @list.update_attributes!(params[:list])
+
     respond_to do |format|
-      format.html { redirect_to lists_url}
       format.js {render jsonp: @list}
    end
   end
@@ -36,7 +36,6 @@ class ListsController < ApplicationController
   def destroy
     @list = List.destroy(params[:id])
     respond_to do |format|
-      format.html { redirect_to lists_url}
       format.js
    end
   end

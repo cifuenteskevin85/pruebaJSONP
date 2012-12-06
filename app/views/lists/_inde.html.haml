@@ -1,8 +1,8 @@
+%h1 WORKS
 %div{:id => 'form_new'}
   = render 'form'
 %h2 Incomplete Works
-%div{:class => "lists", :id => "incomplete_lists"}
+%div{:class => "lists well", :id => "incomplete_lists"}
   = render @incomplete_lists
-
 %h2 complete Works
-%div{:class => "lists", :id => "complete_lists"}= render @complete_lists
+%div{:class => "lists well", :id => "complete_lists"}= render @complete_lists

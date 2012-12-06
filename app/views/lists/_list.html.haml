@@ -1,4 +1,4 @@
-=form_for list do |f|
+=form_for(list,remote: true) do |f|
   =f.check_box :check
   =f.submit "Update"
   =f.label :check, list.work

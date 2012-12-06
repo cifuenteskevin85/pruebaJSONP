@@ -1,11 +1,8 @@
 $(function(){
   
-  /*$('#wid-task').html('<div id = "wid-form"><%= j render "form" %></div><div id="wid-list"><%= j render @incomplete_lists %></div>');
-  */
   $('#wid-task').html('<div id = "wid-form"><%= j render "inde" %></div>');
-    
+  $('#wid-task #incomplete_lists form input[type=submit]').remove();  
   /*function of controller Actions form*/
-
   $('#wid-task #form_new form input[type=submit]').live('click',function(e){
     e.preventDefault();
     var var_acti = $('#wid-task #form_new form').attr("action");
@@ -30,11 +27,11 @@ $(function(){
   
 
   /*function of controller Actions list*/
-  $('#wid-task #incomplete_lists form input[type=submit]').live('click',function(e){
+  $('#wid-task #incomplete_lists form input[type=checkbox]').click(function(e){
     e.preventDefault();
-    var_acti = $('#wid-task #incomplete_lists form').attr("action");
-    var_meth = $('#wid-task #incomplete_lists form').attr("method");
-    var_seri = $('#wid-task #incomplete_lists form').serialize();
+    var_acti = $(this).parent('form').attr("action");
+    var_meth = $(this).parent('form').attr("method");
+    var_seri = $(this).parent('form').serialize();
     alert(var_meth);
     $.support.cors = true;
     $.ajax({
@@ -44,16 +41,12 @@ $(function(){
       dateType: "jsonp",
       data: var_seri,
       success: function(resp){
-        $("#new_link").hide().after(resp);
         console.log(resp);
       },
       error: function(err){
       }
     });
   });
-
-
-
 
 /*$('#wid-task').html('<iframe src="http://localhost:3000" width="600" height="300">
   <p>Your browser does not support iframes.</p>
