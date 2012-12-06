@@ -29,7 +29,7 @@ class ListsController < ApplicationController
     @list.update_attributes!(params[:list])
     respond_to do |format|
       format.html { redirect_to lists_url}
-      format.js
+      format.js {render jsonp: @list}
    end
   end
 

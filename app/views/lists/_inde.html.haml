@@ -1,5 +1,5 @@
 %div{:id => 'form_new'}
-  = link_to "New Work", new_list_path, id: "new_link", remote: true
+  = render 'form'
 %h2 Incomplete Works
 %div{:class => "lists", :id => "incomplete_lists"}
   = render @incomplete_lists

@@ -1,15 +1,16 @@
 $(function(){
   
-  $('#wid-task').html('<div id = "wid-form"><%= j render "form" %></div><div id="wid-list"><%= j render @incomplete_lists %></div>');
-  /*$('#wid-task').html('<div id = "wid-form"><%= j render "inde" %></div>');*/
+  /*$('#wid-task').html('<div id = "wid-form"><%= j render "form" %></div><div id="wid-list"><%= j render @incomplete_lists %></div>');
+  */
+  $('#wid-task').html('<div id = "wid-form"><%= j render "inde" %></div>');
     
   /*function of controller Actions form*/
 
-  $('#wid-task #wid-form form input[type=submit]').live('click',function(e){
+  $('#wid-task #form_new form input[type=submit]').live('click',function(e){
     e.preventDefault();
-    var var_acti = $('#wid-task #wid-form form').attr("action");
-    var var_meth = $('#wid-task #wid-form form').attr("method");
-    var var_seri = $('#wid-task #wid-form form').serialize();
+    var var_acti = $('#wid-task #form_new form').attr("action");
+    var var_meth = $('#wid-task #form_new form').attr("method");
+    var var_seri = $('#wid-task #form_new form').serialize();
 
     $.support.cors = true;
     $.ajax({
@@ -19,8 +20,7 @@ $(function(){
       dateType: "jsonp",
       data: var_seri,
       success: function(resp){
-        
-        
+        console.log(resp);
       },
       error: function(err){
         alert(err);
@@ -30,17 +30,19 @@ $(function(){
   
 
   /*function of controller Actions list*/
-  $('#wid-task #wid-form form input[type=submit]').live('click',function(e){
+  $('#wid-task #incomplete_lists form input[type=submit]').live('click',function(e){
     e.preventDefault();
-    var_acti = $('#wid-task #wid-list form').attr("action");
-
+    var_acti = $('#wid-task #incomplete_lists form').attr("action");
+    var_meth = $('#wid-task #incomplete_lists form').attr("method");
+    var_seri = $('#wid-task #incomplete_lists form').serialize();
+    alert(var_meth);
     $.support.cors = true;
     $.ajax({
       url: "http://localhost:3000" + var_acti,
-      type:"GET",
+      type:"POST",
       crossdomain: true,
       dateType: "jsonp",
-      data: "",
+      data: var_seri,
       success: function(resp){
         $("#new_link").hide().after(resp);
         console.log(resp);

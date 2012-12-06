@@ -1,3 +1,3 @@
 class List < ActiveRecord::Base
-  attr_accessible :work
+  attr_accessible :work, :check
 end
